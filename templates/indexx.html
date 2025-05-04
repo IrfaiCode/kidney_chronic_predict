@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Kidney Predict</title>
+
+    <!-- <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.3/examples/product/"
+    /> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&display=swap" rel="stylesheet"> -->
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+    /> -->
+
+    <!-- <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
+
+    <!-- Custom styles for this template -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='product.css') }}"
+    /> -->
+  </head>
+  <body id="beranda">
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path
+          d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"
+        />
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path
+          d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+        />
+        <path
+          d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
+        />
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path
+          d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+        />
+      </symbol>
+    </svg> -->
+
+    <!-- <div
+      class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+    >
+      <button
+        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        aria-label="Toggle theme (auto)"
+      >
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+          <use href="#circle-half"></use>
+        </svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul
+        class="dropdown-menu dropdown-menu-end shadow"
+        aria-labelledby="bd-theme-text"
+      >
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="light"
+            aria-pressed="false"
+          >
+            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+              <use href="#sun-fill"></use>
+            </svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="dark"
+            aria-pressed="false"
+          >
+            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+              <use href="#moon-stars-fill"></use>
+            </svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center active"
+            data-bs-theme-value="auto"
+            aria-pressed="true"
+          >
+            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+              <use href="#circle-half"></use>
+            </svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div> -->
+
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol
+        id="aperture"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path
+          d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"
+        />
+      </symbol>
+      <symbol id="cart" viewBox="0 0 16 16">
+        <path
+          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+        />
+      </symbol>
+      <symbol id="chevron-right" viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+        />
+      </symbol>
+    </svg> -->
+
+    <nav
+      class="navbar navbar-expand-md sticky-top shadow p-2 mb-lg-auto bg-body-tertiary rounded-bottom-3"
+    >
+      <div class="container">
+        <!-- <a class="navbar-brand d-md-none" href="#">
+          <svg class="bi" width="24" height="24">
+            <use xlink:href="#aperture" />
+          </svg>
+          Aperture
+        </a> -->
+        <!-- <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvas"
+          aria-controls="offcanvas"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvas"
+          aria-labelledby="offcanvasLabel"
+        >
+          <!-- <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div> -->
+          <div class="offcanvas-body">
+            <ul class="navbar-nav flex-grow-1 justify-content-between">
+              <li class="nav-item d-flex align-items-center">
+                <img src="../static/assets/img/kidney_logo.png" alt=""/>
+                <div class="d-flex flex-column">
+                  <small class="fw-bold text-primary">Kidney Predict</small>
+                  <small>Website for health</small>
+                </div>
+              </li>
+            </ul>
+            <ul class="navbar-nav flex-grow-1 justify-content-between fw-semibold">
+              <li class="nav-item nav-underline">
+                <a class="nav-link text-primary-emphasis" href="#beranda">Beranda</a>
+              </li>
+              <li class="nav-item nav-underline">
+                <a class="nav-link text-primary-emphasis" href="#tentang">Tentang</a>
+              </li>
+              <li class="nav-item nav-underline">
+                <a class="nav-link text-primary-emphasis" href="#faktor">Faktor Risiko</a>
+              </li>
+              <li class="nav-item nav-underline">
+                <a class="nav-link text-primary-emphasis" href="#prediksi">Prediksi</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section id="beranda">
+      <div class="position-relative overflow-hidden my-2">
+        <div class="row row-cols-2">
+          <!-- data-aos="fade-down" -->
+          <div class="col align-content-center">
+            <div class="col p-md-5 mx-2 my-5">
+              <h1 class="text-primary">Prediksi Risiko</h1>
+              <h1 class="text-primary">Penyakit Ginjal Kronis</h1>
+              <div class="col my-4">
+                <p>Kidney Predict menggunakan teknologi AI untuk memambantu Anda memahami risiko penyakit ginjal kronis berdasarkan faktor kesehatan.</p>
+              </div>
+              <div class="col my-5">
+                <a href="#prediksi" class="btn btn-light fw-medium bg-primary text-bg-primary rounded-5">Cek Risiko Anda <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col text-lg-center bg-primary rounded-start-pill p-md-5">
+              <img src="../static/assets/img/kidney.png" alt=""/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang" style="padding-top: 5rem;">
+      <!-- position-relative overflow-hidden p-2 p-md-5 m-md-3 bg-body-secondary rounded-2 -->
+      <div class="position-relative overflow-hidden row m-md-3 justify-content-evenly">
+        <div class="card" style="width: 25rem;">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 25rem;">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 25rem;">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="position-relative overflow-hidden row m-md-3 justify-content-evenly">
+        <div class="card" style="width: 25rem;">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 25rem;">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 25rem;">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faktor" class="pt-4">
+      <div
+        class="position-relative overflow-hidden p-2 p-md-5 m-md-3 bg-body-secondary rounded-2"
+      >
+      <div class="row row-cols-1">
+        <!-- data-aos="fade-down" -->
+        <div class="col">
+          <h1 class="text-primary">Faktor Risiko Penyakit Ginjal Kronis</h1>
+          <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Kolom</th>
+                <th>Nama atribut</th>
+                <th>Deskripsi</th>
+                <th>Tipe</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Age</td>
+                <td>Age</td>
+                <td>Identitas unik untuk setiap pasien</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>bp</td>
+                <td>Blood Pressure</td>
+                <td>Pembacaan tekanan darah pasien</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>sg</td>
+                <td>Specific Gravity</td>
+                <td>Berat jenis urin, untuk menunjukkan fungsi ginjal</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>al</td>
+                <td>Albumin</td>
+                <td>Kadar albumin dalam plasma darah</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>su</td>
+                <td>Sugar</td>
+                <td>Tingkat gula dalam plasma darah</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>rbc</td>
+                <td>Red Blood Cells</td>
+                <td>Jumlah sel darah merah dalam plasma darah</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>pc</td>
+                <td>Pus Cell</td>
+                <td>Jumlah sel darah putih dalam urin</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>pcc</td>
+                <td>Pus Cell Clumps</td>
+                <td>Gumpalan sel nanah dalam urin tanda terdapat infeksi bakteri</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>ba</td>
+                <td>Bacteria</td>
+                <td>Kehadiran infeksi bakteri dalam urin</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>bgr</td>
+                <td>Blood Glucose Random</td>
+                <td>Pengukuran kadar glukosa dalam darah secara acak tanpa mempertimbangkan waktu terakhir pasien mengonsumsi makanan</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>bu</td>
+                <td>Blood Urea</td>
+                <td>Kadar urea dalam plasma darah</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>sc</td>
+                <td>Serum Creatinine</td>
+                <td>Kadar kreatin dalam otot pasien yang dikeluarkan melalui ginjal</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>sod</td>
+                <td>Sodium</td>
+                <td>Kadar mineral natrium dalam darah</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>pot</td>
+                <td>Potassium</td>
+                <td>Kadar mineral kalium dalam darah</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>hemo</td>
+                <td>Hemoglobin</td>
+                <td>Kadar protein yang bertanggung jawab mengangkut oksigen dalam sel darah merah</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>pcv</td>
+                <td>Packed Cell Volume</td>
+                <td>Persentase volume sel darah dalam sampel darah</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>wc</td>
+                <td>White Blood Cell Count</td>
+                <td>Jumlah sel darah putih, menunjukkan imun</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>rc</td>
+                <td>Red Blood Cell Count (rc)</td>
+                <td>Jumlah sel darah merah</td>
+                <td>Numerical</td>
+              </tr>
+              <tr>
+                <td>htn</td>
+                <td>Hypertension</td>
+                <td>Kondisi pasien memiliki tekanan darah tinggi secara terus menerus pada pembuluh darah</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>dm</td>
+                <td>Diabetes Mellitus</td>
+                <td>Gangguan produksi atau respons tubuh terhadap insulin, suatu kondisi metabolisme kadar glukosa darah yang tinggi.</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>cad</td>
+                <td>Coronary Artery Disease</td>
+                <td>Kondisi jantung mengalami penyempitan atau penyumbatan pembuluh darah akibat penumpukan plak sehingga mengalami kesulitan memasok cukup nutrisi, oksigen, dan darah ke otot jantung</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>appet</td>
+                <td>Appetite</td>
+                <td>Keinginan pasien untuk makan makanan</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>pe</td>
+                <td>Pedal Edema</td>
+                <td>Pembengkakan yang terjadi di area kaki pasien akibat peradangan atau cedera</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>ane</td>
+                <td>Anemia</td>
+                <td>Jumlah sel darah merah tidak mencukupi untuk mengangkut oksigen ke seluruh tubuh</td>
+                <td>Nominal</td>
+              </tr>
+              <tr>
+                <td>Classification</td>
+                <td>Class</td>
+                <td>Status kesehatan pasien terdiagnosis positif atau negatif penyakit ginjal kronis</td>
+                <td>Nominal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="prediksi" class="pt-4">
+      <div
+        class="position-relative overflow-hidden p-2 p-md-5 m-md-3 bg-body-secondary rounded-2"
+      >
+      <div class="row row-cols">
+        <!-- data-aos="fade-down" -->
+        <div class="col"> 
+          <h1 class="text-primary">Prediksi Risiko</h1>
+
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <label for="basic-url" class="form-label">Your vanity URL</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          <div>   
+            <input class="btn btn-primary" type="submit" value="Predict">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="d-block mb-2"
+            role="img"
+            viewBox="0 0 24 24"
+          >
+            <title>Product</title>
+            <circle cx="12" cy="12" r="10" />
+            <path
+              d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"
+            />
+          </svg>
+          <small class="d-block mb-3 text-body-secondary"
+            >&copy; 2017–2024</small
+          >
+        </div>
+        <div class="col-6 col-md">
+          <h5>Features</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Cool stuff</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Random feature</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Team feature</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Stuff for developers</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Another one</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Last time</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Resource name</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Resource</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Another resource</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Final resource</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Business</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Education</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Government</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#">Gaming</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="link-secondary text-decoration-none" href="#">Team</a>
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Locations</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#"
+                >Privacy</a
+              >
+            </li>
+            <li>
+              <a class="link-secondary text-decoration-none" href="#">Terms</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+      duration: 1000,
+      once: true
+    });
+    </script>
+    
+  </body>
+</html>
